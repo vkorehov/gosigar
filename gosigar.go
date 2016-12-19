@@ -2,11 +2,11 @@
 package gosigar
 
 /*
-#cgo darwin CPPFLAGS: -I/usr/local/include
+#cgo darwin CFLAGS: -I/usr/local/include
 #cgo darwin LDFLAGS: -L/usr/local/lib -lsigar
-#cgo linux CPPFLAGS: -I/usr/local/include
+#cgo linux CFLAGS: -I/usr/local/include
 #cgo linux LDFLAGS: -L/usr/local/lib -lsigar
-#cgo windows CPPFLAGS: -IC:\sigar\include
+#cgo windows CFLAGS: -IC:\sigar\include
 #cgo windows LDFLAGS: -LC:\sigar\build-src\Release -lsigar
 
 #include <stdio.h>
