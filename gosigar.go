@@ -2,16 +2,17 @@
 package gosigar
 
 /*
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "sigar.h"
 #cgo darwin CPPFLAGS: -I/usr/local/include
 #cgo darwin LDFLAGS: -L/usr/local/lib -lsigar
 #cgo linux CPPFLAGS: -I/usr/local/include
 #cgo linux LDFLAGS: -L/usr/local/lib -lsigar
 #cgo windows CPPFLAGS: -IC:\sigar\include
 #cgo windows LDFLAGS: -LC:\sigar\build-src\Release -lsigar
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sigar.h>
 
 char* gs_char_t_(char **data, int idx) {
 	return data[idx];
