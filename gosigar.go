@@ -6,8 +6,8 @@ package gosigar
 #cgo darwin LDFLAGS: -L/usr/local/lib -lsigar
 #cgo linux CFLAGS: -I/usr/local/include
 #cgo linux LDFLAGS: -L/usr/local/lib -lsigar
-#cgo windows CFLAGS: -IC:\sigar\include
-#cgo windows LDFLAGS: -LC:\sigar\build-src\Release -lsigar
+#cgo windows CFLAGS: -I C:/sigar/include/ -mcmodel=medium
+#cgo windows LDFLAGS: -L C:/sigar/build-src/Release -lsigar -mcmodel=medium
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -72,27 +72,6 @@ func cstring_(cs *C.char) string {
 	return string(buf[:clen])
 }
 
-var ver_ *Ver
-
-func Version() *Ver {
-	if ver_ == nil {
-		ver := C.sigar_version_get()
-		ver_ = &Ver{
-			BuildDate:   cstring_(ver.build_date),
-			ScmRevision: cstring_(ver.scm_revision),
-			Version:     cstring_(ver.version),
-			Archname:    cstring_(ver.archname),
-			Archlib:     cstring_(ver.archlib),
-			Binname:     cstring_(ver.binname),
-			Description: cstring_(ver.description),
-			Major:       int(ver.major),
-			Minor:       int(ver.minor),
-			Maint:       int(ver.maint),
-			Build:       int(ver.build),
-		}
-	}
-	return ver_
-}
 
 type Sigar struct {
 	sigar *C.sigar_t
